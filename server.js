@@ -2,6 +2,7 @@
 import { config } from "dotenv";
 config();
 const port=process.env.PORT||5200;
+console.log(process.env.PORT)
 import cloudinary from 'cloudinary'
 import app from "./app.js";
 import connectionToDB from "./config/bdconnection.js";
