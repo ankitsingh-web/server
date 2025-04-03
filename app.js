@@ -15,10 +15,19 @@ import errorMiddleware from './middleware/error.middleware.js';
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));//that help to find data from qeuery param and parsing the data;
 //console.log(process.env.FRONTEND_URL);
-app.use(cors({
-  origin: 'http://localhost:5173',  // Allow requests from this origin
-  credentials: true,                // Allow credentials such as cookies
-}));
+// app.use(cors({
+//   origin: 'http://localhost:5173',  // Allow requests from this origin
+//   credentials: true,                // Allow credentials such as cookies
+// }));
+
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "https://vite-project-jmuk.onrender.com");
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  res.header("Access-Control-Allow-Credentials", "true");
+  next();
+});
+
 app.use(morgan('dev'))
 app.use(cookieParser());
 
