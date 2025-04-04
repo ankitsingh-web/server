@@ -15,17 +15,12 @@ import errorMiddleware from './middleware/error.middleware.js';
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));//that help to find data from qeuery param and parsing the data;
 //console.log(process.env.FRONTEND_URL);
-// app.use(cors({
-//   origin: 'http://localhost:5173',  // Allow requests from this origin
-//   credentials: true,                // Allow credentials such as cookies
-// }));
-
 app.use(cors({
-  origin: function (origin, callback) {
-    callback(null, true);
-  },
-  credentials: true,
+  origin: 'http://localhost:5173',  // Allow requests from this origin
+  credentials: true,                // Allow credentials such as cookies
 }));
+
+
 
 app.use(morgan('dev'))
 app.use(cookieParser());
