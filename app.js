@@ -19,8 +19,15 @@ app.use(express.urlencoded({extended:true}));//that help to find data from qeuer
 //   origin: 'http://localhost:5173',  // Allow requests from this origin
 //   credentials: true,                // Allow credentials such as cookies
 // }));
+// app.use(cors({
+//   origin: '*', // Allow all origins
+//   credentials: true    
+// }));
 app.use(cors({
-  origin: '*', // Allow all origins
+  origin: (origin, callback) => {
+    callback(null, origin); // Reflects the request origin
+  },
+  credentials: true
 }));
 
 
